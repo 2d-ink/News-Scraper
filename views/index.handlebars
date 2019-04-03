@@ -1,0 +1,60 @@
+<nav>
+    <div class="nav-wrapper blue darken-1">
+        <a href="#" class="brand-logo">EchoJs Scraper!</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/scrape">Start Scrape</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+
+<br>
+<br>
+<br>
+
+<!-- All the articles come next -->
+<div class="container">
+
+    <table>
+        <tbody>
+
+            {{#each articles}}
+            <div class=row>
+
+                <div class="col s8">
+                    <h5>{{this.title}}</h5>
+                    <a href="{{this.link}}" class="collection-item red-text" target="_blank">Click to read</a>
+                </div>
+                <div class="col s4">
+                    <button class="noteBtn waves-effect waves-light btn-flat light-blue darken-3 white-text"
+                        id="{{this._id}}">Leave a comments!</button>
+                </div>
+
+            </div>
+            {{/each}}
+
+        </tbody>
+    </table>
+
+</div>
+
+<!-- modal that displays the user notes -->
+<div id="modal_note" class="modal modal-fixed-footer">
+
+    <div class="modal-content">
+        <p>Comments</p>
+        <ul class="messages collection"></ul>
+    </div>
+
+    <div class="modal-footer">
+        <form name="note" id="notes_form">
+            <input required placeholder="Leave a comment" type="text" name="note_text" id="noteText">
+            <a href="/new_note/" + {{this.id}}><button class="btn light-blue darken-3 left" type="submit" id="noteBtn">
+                    Post Note!
+                </button></a>
+            <a href="#" class="modal-action modal-close waves-effect waves-light btn-flat">Close</a>
+        </form>
+    </div>
+
+</div>
